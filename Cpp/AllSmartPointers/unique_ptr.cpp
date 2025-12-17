@@ -1,10 +1,22 @@
 #include <iostream>
+#include <memory>
 
 /*Единственный владелец объекта.
 Нельзя копировать.
 Можно перемещать.*/
 
-template <typename T>
+class  my_functor_as_deleter
+{
+public:
+    template <typename T>
+    void operator()(T* ptr) const
+    {
+        std::cout << "functor called";
+        delete ptr;
+    }
+};
+
+template <typename T, typename Deleter = std::default_delete<T>>
 class UniquePtr
 {
 public:
@@ -33,10 +45,14 @@ public:
         return this->ptr == ptr;
     }
 
-    ~UniquePtr() { delete ptr; }
+    ~UniquePtr()
+    {
+        deleter(ptr);
+    }
 
     T& operator*() { return *ptr; }
     T* operator->() { return ptr; }
 private:
     T* ptr;
+    Deleter deleter;
 };
