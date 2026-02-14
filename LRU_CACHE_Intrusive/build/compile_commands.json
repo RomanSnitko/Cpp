@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/roman/lru_cache_intrusive/build",
+  "command": "/usr/bin/clang++-17 -I/home/roman/lru_cache_intrusive/include -g -std=gnu++20 -o CMakeFiles/lru_demo.dir/src/main.cpp.o -c /home/roman/lru_cache_intrusive/src/main.cpp",
+  "file": "/home/roman/lru_cache_intrusive/src/main.cpp",
+  "output": "CMakeFiles/lru_demo.dir/src/main.cpp.o"
+}
+]
